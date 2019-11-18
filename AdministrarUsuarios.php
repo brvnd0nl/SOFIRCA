@@ -56,7 +56,7 @@ include('components\header.php');
 <?php include('components\footer.php'); ?>
 <script>
     $( document ).ready(function() {
-        $( "#MNU_AdministrarUsuarios" ).last().addClass( "Menuactive" );
+        $( "#MNU_AdministrarUsuarios" ).last().addClass( "Menuactive" ); 
     });
     $('body').keypress(function(e){
         if (e.keyCode == 13)

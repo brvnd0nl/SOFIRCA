@@ -76,7 +76,9 @@
                         <a id="MNU_RegistrarCompetencia" href="<?php echo $UrlBase ?>Ingresar\RegistrarCompetencias.php" class="list-group-item list-group-item-action bg-light">Registrar Competencias</a>
                         <a id="MNU_RegistrarFicha" href="<?php echo $UrlBase ?>Ingresar\RegistrarFicha.php" class="list-group-item list-group-item-action bg-light">Registrar Fichas de Caracterizacion</a>
                         <a id="MNU_RegistrarAprendiz" href="<?php echo $UrlBase ?>Ingresar\RegistrarAprendiz.php" class="list-group-item list-group-item-action bg-light">Registrar Aprendices en Formación</a>
-                    </div>
+						<a id="MNU_RegistrarPeriodo" href="<?php echo $UrlBase ?>Ingresar\RegistrarPeriodo.php" class="list-group-item list-group-item-action bg-light">Registrar Periodo Academico</a>
+                    
+					</div>
                     <a href="#modulo3" class="list-group-item list-group-item-action bg-light" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><span class="hidden-sm-down">Modulo N°3 </span><span class="icon-circle-down"></span></a>
                     <div class="collapse" id="modulo3">
                         <a id="MNU_Consulta" href="<?php echo $UrlBase ?>Consulta\Consultas.php" class="list-group-item list-group-item-action bg-light">Consultas</a>
