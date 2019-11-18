@@ -383,7 +383,7 @@ include('..\components\header.php');
 
 
 
-                    }else if(data == 1){
+                    }else if(data >= 1){
                         alert("El instructor cuenta con un horario que cruza con el horario que intenta ingresar\nPorfavor verifique nuevamente.")
                     }
                 }
