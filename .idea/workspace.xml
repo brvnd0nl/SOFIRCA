@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9b5fc3e1-e762-4643-b6d7-9add73b74041" name="Default Changelist" comment="" />
+    <list default="true" id="9b5fc3e1-e762-4643-b6d7-9add73b74041" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <list id="83ea092e-0164-43f5-a1e6-91abcf05693f" name="Cambios de PHPstorm" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +35,16 @@
   <component name="FavoritesManager">
     <favorites_list name="PruebaProyecto" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\wamp64\www\WorkSpace\SOFIRCA\.idea" />
+      </set>
+    </option>
+  </component>
   <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpServers">
     <servers>
@@ -37,8 +52,10 @@
     </servers>
   </component>
   <component name="ProjectId" id="1Ric9XZtbpBy8zjaVuXRSFV9E02" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../bin/php/php7.3.5/php.ini" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -58,7 +75,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Wamp Localhost" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" server_name="Wamp" start_url="/WorkSpace/PruebaProyecto">
+    <configuration name="Wamp Localhost" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" server_name="Wamp" start_url="/WorkSpace/SOFIRCA">
       <method v="2" />
     </configuration>
   </component>
@@ -138,10 +155,28 @@
       <workItem from="1573966821638" duration="1839000" />
       <workItem from="1573968988624" duration="12000" />
       <workItem from="1574019647283" duration="5275000" />
+      <workItem from="1574035386320" duration="642000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Cambios de PHPstorm" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambios de PHPstorm" />
   </component>
 </project>
