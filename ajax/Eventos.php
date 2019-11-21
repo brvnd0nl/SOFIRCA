@@ -88,6 +88,25 @@
             }
          break;
 
+        case 'ObtenerFechasPeriodo':
+            if(isset($_POST['Datos'])){
+                $db = $database->open();
+                try {
+                    $Datos = $_POST['Datos'];
+                    $sql = "SELECT Pa_FechaInicio, Pa_FechaFin FROM periodoacademico WHERE Pa_Id LIKE '%$Datos%' ";
+                    foreach ($db->query($sql) as $row) {
+                        echo "". $row['Pa_FechaInicio'] . "æ" .$row['Pa_FechaFin']."";
+                    }
+
+                } catch (PDOException $e) {
+                    $_SESSION['message'] = $e->getMessage();
+                    //header('location: ../index.php');
+                    echo $e->getMessage();
+                }
+                $database->close();
+            }
+            break;
+
         case 'RevisionIES':
             if(isset($_POST['Datos'])){
                 $db = $database->open();

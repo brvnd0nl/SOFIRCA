@@ -45,6 +45,8 @@ include('..\components\header.php');
                     $database->close();
                     ?>
                 </select>
+                <input type="hidden" id="HDN_sFechaDesdePeriodo" name="FechaDesdePeriodo">
+                <input type="hidden" id="HDN_sFechaHastaPeriodo" name="FechaHastaPeriodo">
             </div>
             <div class="form-group">
                 <label for="TXT_DFInicio">Fecha Inicio</label>
@@ -125,7 +127,7 @@ include('..\components\header.php');
             </div>
             <div class="form-group">
                 <label for="TXT_DFechaGrado">Dias</label>
-                <div class="row">
+                <div class="row" id="abc">
                     <div class="col">
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input" id="CHK_Lunes" name ="SemanaLunes" >
@@ -219,6 +221,7 @@ include('..\components\header.php');
             <div class="form-group">
                 <label for="LBX_sFichaFormacion">Ficha</label>
                 <select class="form-control" id="LBX_sFichaFormacion" name="FichaFormacion" required>
+                    <option value=""></option>
                 <?php
                     $database = new Connection();
                     $db = $database->open();
@@ -237,12 +240,12 @@ include('..\components\header.php');
 
                     $database->close();
                     ?>
-                    <option value=""></option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="LBX_sCompetenciaPrograma">Competencia</label>
                 <select class="form-control" id="LBX_sCompetenciaPrograma" name="Competencia" required>
+                    <option value=""></option>
                 <?php
                     $database = new Connection();
                     $db = $database->open();
@@ -261,7 +264,6 @@ include('..\components\header.php');
 
                     $database->close();
                     ?>
-                    <option value=""></option>
                 </select>
             </div>
         </div>
@@ -319,6 +321,32 @@ include('..\components\header.php');
             $('#BTN_sIngresarCargaA').submit();
         }
     });
+
+    $(document).on("change","#LBX_sPeriodoAcademico",function(event){
+        event.preventDefault();
+        var Datos =  $(this).val();
+        if(Datos === "" || Datos == null){
+            return;
+        }
+        var jqxhr = $.post("../ajax/Eventos.php",{NombreEvento: 'ObtenerFechasPeriodo', Datos: Datos }, function(data){
+            data.replace("\n","").replace("\r","");
+            var Fechas =  data.replace("\r\n","").replace("\r","").replace("\n","").split('æ');
+            var FechaIHTML = $("#HDN_sFechaDesdePeriodo");
+            var FechaFHTML = $("#HDN_sFechaHastaPeriodo");
+            //cmb.html(data);
+            FechaIHTML.html(Fechas[0]);
+            FechaIHTML.change();
+            $("#HDN_sFechaDesdePeriodo").val(Fechas[0]);
+            FechaFHTML.html(Fechas[1]);
+            FechaFHTML.change();
+            $("#HDN_sFechaHastaPeriodo").val(Fechas[1]);
+            //cmb.change();
+        })
+            .fail(function (jqXHR1, textStatus, errorThrown) {
+                console.error("The following error occurred: "+ textStatus + ' : ' +  jqXHR1.responseText + ' : ' + errorThrown );
+                return;
+            });
+    });
     
     function validarPaso1() {
         var PeriodoAcademico = $("#LBX_sPeriodoAcademico").val();
@@ -337,6 +365,9 @@ include('..\components\header.php');
         var SemanaJueves = $("#CHK_Jueves").prop('checked');
         var SemanaViernes = $("#CHK_Viernes").prop('checked');
         var SemanaSabado = $("#CHK_Sabado").prop('checked');
+
+        var FechaInicioPeriodo = $("#HDN_sFechaDesdePeriodo").val();
+        var FechaFinalPeriodo = $("#HDN_sFechaHastaPeriodo").val();
 
         if (PeriodoAcademico == '' || FechaInicio == '' || FechaFin == ''
             || Ambiente == '' || Instructor ==''){
@@ -361,6 +392,11 @@ include('..\components\header.php');
             return;
         }
 
+        if(FechaInicioPeriodo > FechaInicio || FechaFinalPeriodo < FechaFin){
+            alert('Las fechas no se encuentran en el rango del Periodo seleccionaro. \nFecha Inicio: ' + FechaInicioPeriodo + '\nFecha Fin: ' + FechaFinalPeriodo);
+            return;
+        }
+
         var HoraInicio = HoraInicioHH.concat(HoraInicioMM);
         var HoraFin = HoraFinHH.concat(HoraFinMM);
 
@@ -380,7 +416,7 @@ include('..\components\header.php');
                         $('#PasoN2').removeAttr('style');
                         $('#PasoN4').removeAttr('style');
                         $('#BTN_sValidarPasoN1').css("display","none");
-
+                        ocultarFormularioPrincipal();
 
 
                     }else if(data >= 1){
@@ -390,8 +426,26 @@ include('..\components\header.php');
             },
             error:function(data){
                 //En caso de Error, Entra Aqui
-                alert("Se nos presento un problema tecnico, por favor contacte con el Administrador\n " + data);
+                alert("Se nos ha presento un problema tecnico, por favor contacte con el Administrador\n Error: " + data);
             }
         });
+    }
+
+    function ocultarFormularioPrincipal() {
+        $('#LBX_sPeriodoAcademico').attr("disabled","");
+        $('#TXT_DFInicio').attr("disabled","");
+        $('#LBX_dHHoraInicio').attr("disabled","");
+        $('#LBX_dMMHoraInicio').attr("disabled","");
+        $('#TXT_DFFin').attr("disabled","");
+        $('#LBX_dHHoraFin').attr("disabled","");
+        $('#LBX_dMMHoraFin').attr("disabled","");
+        $('#LBX_sInstructor').attr("disabled","");
+        $('#LBX_sAmbiente').attr("disabled","");
+        $('#CHK_Lunes').attr("disabled","");
+        $('#CHK_Martes').attr("disabled","");
+        $('#CHK_Miercoles').attr("disabled","");
+        $('#CHK_Jueves').attr("disabled","");
+        $('#CHK_Viernes').attr("disabled","");
+        $('#CHK_Sabado').attr("disabled","");
     }
 </script>
