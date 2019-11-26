@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\components",
+    "\\Consulta"
   ],
-  "SelectedNode": "\\ValidacionHorarios.php",
+  "SelectedNode": "\\index.php",
   "PreviewInSolutionExplorer": false
 }

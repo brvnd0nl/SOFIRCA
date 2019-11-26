@@ -1,0 +1,6 @@
+{
+    "git.autofetch": true,
+    "git.scanRepositories": [
+        "https://github.com/BrandonMarchena/SOFIRCA.git"
+    ]
+}

@@ -386,6 +386,12 @@ include('..\components\header.php');
             return;
         }
 
+        if(FechaInicioPeriodo > FechaFinalPeriodo ){
+            alert('Las fechas están mal diligenciadas');
+            return;
+        }
+
+
         if(SemanaLunes == false && SemanaMartes == false && SemanaMiercoles == false
             && SemanaJueves == false && SemanaViernes == false && SemanaSabado == false){
             alert('Debe seleccionar un dia de semana');

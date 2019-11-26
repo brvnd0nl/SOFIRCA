@@ -44,10 +44,14 @@
             session_start();
             if(isset($_SESSION['message'])){
         ?>
+		<center>
+		 <div class="col-6">
                 <div class="alert alert-dismissible alert-danger" style="margin-top:20px;">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                     <?php echo $_SESSION['message']; ?>
                 </div>
+				</div>
+                </center>
         <?php
 
                 unset($_SESSION['message']);

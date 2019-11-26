@@ -24,41 +24,79 @@ include('..\components\header.php');
     <hr>
 	
     <form  action="../RegistroBD/GuardarIES.php" method="POST">
-        <div class="form-group">
-            <label for="TXT_sNombreInstitucion">Nombre Institucion</label>
-            <input type="text" class="form-control" name="NombreInstitucion" id="TXT_sNombreInstitucion" required>
+     
+    <div class="row"> 
+    <div class="col-1">
+    </div>
+    <div class="col-2">    
+    <div class="form-group">
+            <label for="TXT_sNombreInstitucion">Seleccione el año</label>
+            <input type="number" required min="2010" max="2040" class="form-control" placeholder="año" name="periodoanio" id="txtanio" required>
+        
         </div>
-        <div class="form-group">
-            <label for="TXT_sDireccion">Direccion</label>
-            <input type="text" class="form-control" name="Direccion" id="TXT_sDireccion" required>
+        
         </div>
+        <input type="button" value="consultar" id="txtanio" class="btn btn-primary" onclick="consulta()"></input>
+        
+        <div class="col-4" id="trimestreoculto" style="display :none">
         <div class="form-group">
-            <label for="TXT_sNombreCoordinador">Nombre del Coordinador</label>
-            <input type="text" class="form-control" name="NombreCoordinador" id="TXT_sNombreCoordinador" required>
+            <label for="TXT_sDireccion">Seleccione trimestre</label>
+                <select name="trimestre" id="trimestreacademico" class="form-control" required>
+                    <option value=""></option>
+                    <option value="1">TRIMESTRE I</option>
+                    <option value="2">TRIMESTRE II</option>
+                    <option value="3">TRIMESTRE III</option>
+                    <option value="4">TRIMESTRE IV</option>
+                </select>
         </div>
-        <div class="form-group">
-            <label for="TXT_sDireccion">Telefono de Contacto</label>
-            <input type="text" class="form-control" name="Telefono" id="TXT_sTelefono">
         </div>
-        <div class="form-group">
-            <label for="TXT_sDireccion">Correo</label>
-            <input type="text" class="form-control" name="Email" id="TXT_sCorreo" required>
         </div>
-        <div class="text-center">
-            <button type="submit" id="BTN_sIngresarIES" name="IngresarIES" class="btn btn-primary mx-auto">Ingresar</button>
-        </div>        
+
+
+
+
+
+
+                
     </form>
 </div>
 <?php include('..\components\footer.php'); ?>
 <script>
-    $( document ).ready(function() {
-        $( "#MNU_RegistrarIES" ).last().addClass( "Menuactive" );
-    });
-    $('body').keypress(function(e){
-    if (e.keyCode == 13)
-    {
-        $('#BTN_sIngresarIES').submit();
-    }
-    });
-</script>
+    
+function consulta(){
 
+
+
+var anio = $("#txtanio").val();
+
+if (anio==""){
+    alert ("ingrese un valor");
+    return;
+}
+
+$.ajax({
+            type:'POST',
+            url: '<?php echo $UrlBase ?>consulta.php',//aqui va tu direccion donde esta tu funcion php
+            data:{Datos:{anio:anio}},//aqui tus datos
+            success:function(data){
+                //Obtengo la respuesta del PHP
+            
+                console.log(data);
+                alert(data);
+                
+
+            },
+            error:function(data){
+                //En caso de Error, Entra Aqui
+                alert("Se nos ha presento un problema tecnico, por favor contacte con el Administrador\n Error: " +data);
+            }
+                
+
+});
+ 
+ }
+ 
+ 
+
+
+</script>
