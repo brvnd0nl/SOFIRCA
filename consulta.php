@@ -9,12 +9,12 @@ include_once("connection.php");
 
 $Datos = $_POST['Datos'];
 $anio=implode ("",$Datos);
-
+$_SESSION['anio']=$anio;
         $mysqli = new mysqli('localhost', 'root', '', 'dbsofirca');
         $mysqli->set_charset("utf8");
 
         // 2) Preparar la orden SQL
-        $consulta = "SELECT * FROM periodoacademico WHERE periodoacademico.Pa_Año = '".$anio."' ";
+        $consulta = "SELECT * FROM periodoacademico WHERE periodoacademico.Pa_Anio = '".$anio."' ";
 
         $res = $mysqli->query($consulta);
         $i = 0;

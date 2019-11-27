@@ -23,7 +23,7 @@ include('..\components\header.php');
     <h2 class="text-center">Registrar Periodo Academico</h2>
     <hr>
 	
-    <form  action="../RegistroBD/GuardarIES.php" method="POST">
+    <form  id ="lista" action="../RegistroBD/GuardarPeriodo.php" method="POST">
      
     <div class="row"> 
     <div class="col-1">
@@ -31,30 +31,83 @@ include('..\components\header.php');
     <div class="col-2">    
     <div class="form-group">
             <label for="TXT_sNombreInstitucion">Seleccione el año</label>
-            <input type="number" required min="2010" max="2040" class="form-control" placeholder="año" name="periodoanio" id="txtanio" required>
+            <input type="number" required class="form-control" placeholder="Año" name="anio" id="periodoanio" required>
         
         </div>
-        
+    
         </div>
-        <input type="button" value="consultar" id="txtanio" class="btn btn-primary" onclick="consulta()"></input>
-        
+        <div id ="btn1">
+            
+            <input type="button" style="margin-top:20px" estyle="margin-right:20px" value="Consultar " id="txtanio" class="btn btn-primary" onclick="consulta()"></input>
+            
+        </div>
+
+        <div id ="btn2" style=" display : none">
+            <a href="../Ingresar/RegistrarPeriodo.php">
+            <input type="button" style="margin-top:20px" estyle="margin-right:20px" value="Editar Año" id="txtanio" class="btn btn-primary"></input></a>
+            
+        </div>
+
+
+
         <div class="col-4" id="trimestreoculto" style="display :none">
         <div class="form-group">
-            <label for="TXT_sDireccion">Seleccione trimestre</label>
-                <select name="trimestre" id="trimestreacademico" class="form-control" required>
-                    <option value=""></option>
-                   
+            <label for="TXT_sDireccion">Seleccione trimestre :</label>
+                <select name="listado" id="listado" class="form-control">
+               
                 </select>
         </div>
         </div>
         </div>
 
+        <br>
+
+        
+        <div class="row"> 
+    <div class="col-1">
+    </div>
+    <div class="col-4" id="1" style="display :none">    
+    <div class="form-group">
+            <label for="TXT_sNombreInstitucion">Seleccione fecha de inicio para el periodo :</label>
+            <input type="date" class="form-control col-6" placeholder="fecha de inicio" name="fechainicio" id="fechainicio" required>
+        
+        </div>
+        
+        </div>
+        <div class="col-4"  id="2" style="display :none">    
+    <div class="form-group">
+            <label for="TXT_sNombreInstitucion">Seleccione fecha fin para el periodo :</label>
+            <input type="date" class="form-control col-6" placeholder="fecha de inicio" name="fechafin" id="fechafin" required>
+        
+        </div>
+        </div>
+
+        <br>
+        </div>    
+        <div class="row"> 
+    <div class="col-1">
+    </div>
+
+        <div class="col-4" id="3" style="display :none">
+        <div class="form-group">
+            <label for="TXT_sDireccion">Seleccione estado :</label>
+                <select required name="estado" id="estado" class="form-control">
+               <option value=""></option>
+               <option value="1">ACTIVO</option>
+               <option value="0">INACTIVO</option>
+                </select>
+                    <br>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+</div></div>
 
 
 
 
 
-                
+
+
+
+
     </form>
 </div>
 <?php include('..\components\footer.php'); ?>
@@ -64,7 +117,7 @@ function consulta(){
 
 
 
-var anio = $("#txtanio").val();
+var anio = $("#periodoanio").val();
 
 if (anio==""){
     alert ("ingrese un valor");
@@ -86,10 +139,23 @@ $.ajax({
                     return;
 
                 } else {
-
+                $('#btn2').removeAttr('style');
+                $('#btn1').css("display","none");
                 $('#trimestreoculto').removeAttr('style');
-                $('#txtanio').attr("disabled","");
-                
+                $('#1').removeAttr('style');
+                $('#2').removeAttr('style');
+                $('#3').removeAttr('style');
+                $('#periodoanio').attr("disabled","");
+
+                function cargar_listado() {
+                    document.getElementById("listado").innerHTML += "<option value='"+""+"'>"+""+"</option>";
+                for(var i in listado){ 
+                document.getElementById("listado").innerHTML += "<option value='"+listado[i]+"'>"+listado[i]+"</option>"; 
+                }   }
+
+                cargar_listado();
+                                
+                                
                 }
 
 
