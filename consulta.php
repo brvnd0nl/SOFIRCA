@@ -44,7 +44,7 @@ $anio=implode ("",$Datos);
 
             if ($i>0){
                     if ($i==4){
-                    echo "Por favor seleccione otro año: periodos ya registrados";
+                    echo "1";
                     }   else {
                             $imprimir = implode(",",$opciones);
                             echo $imprimir;}

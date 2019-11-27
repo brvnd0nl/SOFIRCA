@@ -43,10 +43,7 @@ include('..\components\header.php');
             <label for="TXT_sDireccion">Seleccione trimestre</label>
                 <select name="trimestre" id="trimestreacademico" class="form-control" required>
                     <option value=""></option>
-                    <option value="1">TRIMESTRE I</option>
-                    <option value="2">TRIMESTRE II</option>
-                    <option value="3">TRIMESTRE III</option>
-                    <option value="4">TRIMESTRE IV</option>
+                   
                 </select>
         </div>
         </div>
@@ -80,10 +77,21 @@ $.ajax({
             data:{Datos:{anio:anio}},//aqui tus datos
             success:function(data){
                 //Obtengo la respuesta del PHP
-            
-                console.log(data);
-                alert(data);
+                var listado =  data.replace("\r\n","").replace("\r","").replace("\n","").split(',');
+                console.log(listado);
+
+                if (listado == "1"){
+
+                    alert("Por favor seleccione otro año: periodos ya registrados");
+                    return;
+
+                } else {
+
+                $('#trimestreoculto').removeAttr('style');
+                $('#txtanio').attr("disabled","");
                 
+                }
+
 
             },
             error:function(data){
