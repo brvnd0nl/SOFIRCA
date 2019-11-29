@@ -29,6 +29,46 @@
             }
         break;
 
+        case 'RevisionPeriodo':
+            if(isset($_POST['Datos'])){
+                $db = $database->open();
+                try {
+                    $Datos = $_POST['Datos'];
+                    $sql = "SELECT * FROM periodoacademico WHERE Pa_Anio LIKE '%$Datos%' ";
+                    $tabla = "";
+                    foreach ($db->query($sql) as $row) {
+                        if ($NivelSeguridad == '1'){
+                            $AccionEditar = '<a href=\"#editar\" data-id=\"'.$row['Pa_Id'].'\" data-toggle=\"modal\" class=\"btn btn-light\" ><span class=\"icon-search\"></span></a>';
+                            $AccionEliminar = '<a href=\"#eliminar\" data-id=\"'.$row['Pa_Id'].'\" data-toggle=\"modal\" class=\"btn btn-light\"><span class=\"icon-bin\"></span></a>';
+                        }else{
+                            $AccionEditar = '<a href=\"#editar\" data-id=\"'.$row['Pa_Id'].'\" data-toggle=\"modal\" class=\"btn btn-light\" disabled><span class=\"icon-search\"></span></a>';
+                            $AccionEliminar = '<a href=\"#eliminar\" data-id=\"'.$row['Pa_Id'].'\" data-toggle=\"modal\" class=\"btn btn-light\" disabled><span class=\"icon-bin\"></span></a>';
+                        }
+
+                        $tabla.='{
+                                    "trimestre" : "'.$row['Pa_Nombre'].'",
+                                    "fechainicio" : "'.$row['Pa_FechaInicio'].'",
+                                    "fechafinal" : "'.$row['Pa_FechaFin'].'",
+                                    "anio" : "'.$row['Pa_Anio'].'",
+                                    "estado" : "'.$row['Pa_Estado'].'",
+                                    "acciones" : "'.$AccionEditar.$AccionEliminar.'"
+                                    },';
+                    }
+
+                    $tabla = substr($tabla,0,strlen($tabla) - 1);
+                    echo '{"data" : ['. $tabla .']}';
+
+                } catch (PDOException $e) {
+                    $_SESSION['message'] = $e->getMessage();
+                    echo $sql."<br>";
+                    die($e->getMessage());
+                }
+                $database->close();
+            }
+            break;
+
+
+
         case 'BuscarInstitucionConvenio':
             if(isset($_POST['Datos'])){
                 $db = $database->open();

@@ -23,6 +23,8 @@ include('..\components\header.php');
             <div class="col"><a class="btn btn-light btn-lg" href="ConsultaCompetencia.php" >Competencia</a></div>
             <div class="col"><a class="btn btn-light btn-lg" href="ConsultaFichas.php" >Fichas</a></div>
             <div class="col"><a class="btn btn-light btn-lg" href="ConsultaAprendices.php" >Aprendices</a></div>
+            <div class="col"><a class="btn btn-light btn-lg" href="ConsultaPeriodo.php" >Periodo Academico</a></div>
+       
         </div>
         <?php   
             }else{

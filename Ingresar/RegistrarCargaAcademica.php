@@ -33,7 +33,7 @@ include('..\components\header.php');
                         $sql = "SELECT * FROM periodoacademico WHERE Pa_Estado  = '1'";
                         foreach ($db->query($sql) as $rowCBX) {
                                 ?>
-                                <option value="<?php echo($rowCBX['Pa_Id']); ?>"> <?php echo($rowCBX['Pa_Nombre']); ?></option>
+                                <option value="<?php echo($rowCBX['Pa_Id']); ?>"> <?php echo($rowCBX['Pa_Anio']." - ".$rowCBX['Pa_Nombre']); ?></option>
                                 <?php
                         }
                     } catch (PDOException $e) {

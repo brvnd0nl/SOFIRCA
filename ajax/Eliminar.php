@@ -38,6 +38,32 @@ switch ($Modal){
         }
         break;
 
+        case 'Modalperiodo' :
+            if(isset($id) && is_null($id) == false && $id != ""){
+                $db = $database->open();
+                try{
+                    $sql = "DELETE FROM periodoacademico WHERE Pa_Id = '".$id."'";
+    
+                    $Respuesta = ( $db->exec($sql) ) ? '1' : '0';
+    
+    
+                    if ( $Respuesta == "0") {
+                        $_SESSION['message'] = "Error Eliminando Registro";
+                    }else{
+                        $_SESSION['message'] = 'Registro eliminado correctamente';
+                    }
+                }
+                catch (PDOException $e){
+                    $_SESSION['message'] = $e->getMessage();
+                    $Respuesta == "0";
+                }
+                $database->close();
+                header('location: ../Consulta/ConsultaPeriodo.php');
+            }
+            break;
+
+
+
     case 'ModalConvenio' :
         if(isset($id) && is_null($id) == false && $id != ""){
             $db = $database->open();

@@ -66,6 +66,52 @@ switch ($Modal){
     }
     break;
 
+    case 'Modalperiodo' :
+        if(isset($id) && is_null($id) == false && $id != ""){
+            $fechainicio = $_POST["NombreInstitucion"];
+            $fechafin = $_POST["Direccion"];
+            $estado = $_POST["NombreCoordinador"];
+            
+            $db = $database->open();
+            try{
+                /*$sql = "SELECT * FROM archivosadjuntos WHERE Ad_NombreAdjunto = '$NombreArchivo' AND Ad_RutaArchivo = '$Ubicacion' ";
+                foreach ($db->query($sql) as $row){
+                    $ArchivoPDF = $row["Ad_Id"];
+                }*/
+   
+                 $sql = "UPDATE periodoacademico
+                                SET     Pa_FechaInicio = '".$fechainicio."',
+                                        Pa_FechaFin = '".$fechafin."',
+                                        Pa_Estado = '".$estado."'
+                                WHERE Pa_Id = '".$id."'";
+    
+                    $Respuesta = ( $db->exec($sql) ) ? '1' : '0';
+    
+                    if ( $Respuesta == "0") {
+                        $_SESSION['message'] = "Error Modificando Registro";
+                    }else{
+                        $_SESSION['message'] = 'Registro Modificado correctamente';
+                    }
+                }
+    
+            catch (PDOException $e){
+                $_SESSION['message'] = $e->getMessage();
+                $Respuesta == "0";
+            }
+            $database->close();
+            header('location: ../Consulta/ConsultaPeriodo.php');
+        }
+        break;
+    
+
+
+
+
+
+
+
+
+
     case 'ModalConvenio' :
         if(isset($id) && is_null($id) == false && $id != ""){
             $Institucion = $_POST["Institucion"];
