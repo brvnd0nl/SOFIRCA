@@ -33,7 +33,6 @@ include('..\components\header.php');
         <div class="row">
             <div class="col"><a class="btn btn-light btn-lg" href="ConsultaAmbientes.php" >Ambiente</a></div>
             <div class="col"><a class="btn btn-light btn-lg" href="ConsultaInstructor.php" >Instructor</a></div>
-            <div class="col"><a class="btn btn-light btn-lg" href="ConsultaCargaAcademica.php" >Carga Academica</a></div>
         </div>
         <?php
             }

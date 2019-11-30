@@ -16,7 +16,7 @@
         $UrlBase = "";
     }
 
-    if(!isset($_SESSION['Usuario'])){
+    /*if(!isset($_SESSION['Usuario'])){
         include_once ($UrlBase."CerrarSesion.php");
         header('location: ../index.php');
     }elseif (!isset($_SESSION['NombreUsuario'])){
@@ -31,7 +31,7 @@
     }elseif (!isset($_SESSION['NivelSeguridad'])){
         include_once ($UrlBase."CerrarSesion.php");
         header('location: ../index.php');
-    }
+    }*/
 ?>
 
 <head>

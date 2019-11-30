@@ -448,18 +448,19 @@
                 try {
                     $Datos = $_POST['Datos'];
                     $sql = "SELECT ambientes.Ab_Id, ambientes.Ab_Nombre, ambientes.Ab_Ubicacion,convenios.Cv_IdInstitucion, banco_ies.Bc_NombreInstitucion ";
-                    $sql.= "FROM ambientes INNER JOIN convenios  ";
-                    $sql.= "ON ambientes.Ab_SsCodConvenio = convenios.Cv_Id ";
+                    $sql.= "FROM ambientes ";
+                    $sql.= "INNER JOIN convenios ";
+                    $sql.= "ON ambientes.Ab_SsCodConvenio = convenios.Cv_IdInstitucion ";
                     $sql.= "INNER JOIN banco_ies ";
                     $sql.= "ON convenios.Cv_IdInstitucion = banco_ies.Bc_Id ";
 
                     if(($Respuesta['Ambiente'] != '') && ($Respuesta['UbicaAmbiente'] == '')){
                         $sql.= " WHERE Ab_Nombre LIKE '%".$Respuesta['Ambiente']."%' AND Cv_IdInstitucion = '".$Institucion."'";
                     }
-                    elseif(( $Respuesta['UbicaAmbiente'] != '') && ($Respuesta['Ambiente'] == '') && ($Respuesta['Institucion'] == '' )){
+                    elseif(( $Respuesta['UbicaAmbiente'] != '') && ($Respuesta['Ambiente'] == '')){
                         $sql.= " WHERE Ab_Ubicacion LIKE '%".$Respuesta['UbicaAmbiente']."%' AND Cv_IdInstitucion = '".$Institucion."'";
                     }
-                    elseif(($Respuesta['UbicaAmbiente'] != '') && ($Respuesta['Ambiente'] != '' ) && ($Respuesta['Institucion'] == '' )){
+                    elseif(($Respuesta['UbicaAmbiente'] != '') && ($Respuesta['Ambiente'] != '' )){
                         $sql.= " WHERE Ab_Nombre LIKE '%".$Respuesta['Ambiente']."%' AND Ab_Ubicacion LIKE '%".$Respuesta['UbicaAmbiente']."%' AND Cv_IdInstitucion = '".$Institucion."'";
                     }
                     elseif(($Respuesta['UbicaAmbiente'] != '' ) && ($Respuesta['Ambiente'] != '' )){
