@@ -18,7 +18,7 @@ include_once($UrlBase.'connection.php');
                 try{
                     $stmt =$db->prepare ("INSERT INTO ambientes (Ab_Nombre,Ab_Ubicacion,Ab_SsCodConvenio) VALUES (:Ab_Nombre,:Ab_Ubicacion,:Ab_SsCodConvenio)");
 
-                   $_SESSION['message'] = ( $stmt->execute(array(':Ab_Nombre' => $_POST["NombreAmbiente"] ,':Ab_Ubicacion' => $_POST["UbicacionAmbiente"] , ':Ab_SsCodConvenio' => $_POST["Institucion"] )) ) ? 'Ambiente agregado correctamente' : 'No se pudo registrar el Ambiente';
+                   $_SESSION['message'] = ( $stmt->execute(array(':Ab_Nombre' => $_POST["NombreAmbiente"] ,':Ab_Ubicacion' => $_POST["UbicacionAmbiente"] , ':Ab_SsCodConvenio' => $Institucion )) ) ? 'Ambiente agregado correctamente' : 'No se pudo registrar el Ambiente';
                     }
                 catch (PDOException $e){
                     $_SESSION['message'] = $e->getMessage();

@@ -23,7 +23,7 @@ include_once($UrlBase.'connection.php');
                 try{
                     $stmt =$db->prepare ("INSERT INTO contrato_instructor (Cn_NumContrato,Cn_CodInstructor,Cn_FechaInicio,Cn_FechaFin,Cn_CfId,Cn_SsCodConvenio,Cn_EstadoContrato) VALUES (:Cn_NumContrato,:Cn_CodInstructor,:Cn_FechaInicio,:Cn_FechaFin,:Cn_CfId,:Cn_SsCodConvenio,1)");
 
-                   $_SESSION['message'] = ( $stmt->execute(array(':Cn_NumContrato' => $_POST["NumeroContrato"] ,':Cn_CodInstructor' => $_POST["Instructor"] , ':Cn_FechaInicio' => $_POST["FechaInicioContrato"] , ':Cn_FechaFin' => $_POST["FechaFinContrato"] , ':Cn_CfId' => $_POST["CentroFormacion"], ':Cn_SsCodConvenio' => $_POST["Institucion"]  )) ) ? 'Contrato agregado correctamente' : 'No se pudo registrar el Contrato';
+                   $_SESSION['message'] = ( $stmt->execute(array(':Cn_NumContrato' => $_POST["NumeroContrato"] ,':Cn_CodInstructor' => $_POST["Instructor"] , ':Cn_FechaInicio' => $_POST["FechaInicioContrato"] , ':Cn_FechaFin' => $_POST["FechaFinContrato"] , ':Cn_CfId' => $_POST["CentroFormacion"], ':Cn_SsCodConvenio' => $Institucion  )) ) ? 'Contrato agregado correctamente' : 'No se pudo registrar el Contrato';
                     }
                 catch (PDOException $e){
                     $_SESSION['message'] = $e->getMessage();
