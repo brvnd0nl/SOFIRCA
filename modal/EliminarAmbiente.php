@@ -10,7 +10,7 @@ if (isset($_POST['Id'])) {
     try {
         $sql = "SELECT ambientes.Ab_Id, ambientes.Ab_Nombre, ambientes.Ab_Ubicacion ";
         $sql.= "FROM ambientes INNER JOIN convenios  ";
-        $sql.= "ON ambientes.Ab_SsCodConvenio = convenios.Cv_Id ";
+        $sql.= "ON ambientes.Ab_SsCodConvenio = convenios.Cv_IdInstitucion ";
         $sql.= "WHERE Ab_Id = '$id' ";
         foreach ($db->query($sql) as $row) {
             ?>

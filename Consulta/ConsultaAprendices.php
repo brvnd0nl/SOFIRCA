@@ -68,10 +68,8 @@ include('..\components\header.php');
         <thead>
         <tr>
             <th>Numero de ficha</th>
-            <th>Tipo de Documento</th>
             <th>Numero de Identificacion</th>
-            <th>Nombres</th>
-            <th>Apellidos</th>
+            <th>Nombre Completo</th>
             <th>Telefono</th>
             <th>Correo Electronico</th>
             <th>Acciones</th>

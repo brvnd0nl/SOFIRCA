@@ -56,7 +56,7 @@ include('..\components\header.php');
                 <label for="LBX_dHHoraInicio">Hora Inicio</label>
 <!--                <input type="time" max="23:59:00" min="07:00:00" class="form-control" name="HoraInicio" id="TXT_dHoraInicio" required>-->
                 <div class="row">
-                    <div class="col-1">
+                    <div class="col-4 col-md-2 col-lg-1">
                         <select class="form-control" id="LBX_dHHoraInicio" name="HHInicio" required>
                             <option value=""></option>
                             <?php
@@ -71,7 +71,7 @@ include('..\components\header.php');
                         </select>
                     </div>
                     <h4>:</h4>
-                    <div class="col-1">
+                    <div class="col-4 col-md-2 col-lg-1">
                         <select class="form-control" id="LBX_dMMHoraInicio" name="MMInicio" required>
                             <?php
                             $Minutos = 0;
@@ -94,7 +94,7 @@ include('..\components\header.php');
                 <label for="LBX_dHHoraFin">Hora Final</label>
 <!--                <input type="time" max="23:59:00" min="07:00:00" class="form-control" name="HoraFin" id="TXT_dHoraFin" required>-->
                 <div class="row">
-                    <div class="col-1">
+                    <div class="col-4 col-md-2 col-lg-1">
                         <select class="form-control" id="LBX_dHHoraFin" name="HHFin" required>
                             <option value=""></option>
                             <?php
@@ -109,7 +109,7 @@ include('..\components\header.php');
                         </select>
                     </div>
                     <h4>:</h4>
-                    <div class="col-1">
+                    <div class="col-4 col-md-2 col-lg-1">
                         <select class="form-control" id="LBX_dMMHoraFin" name="MMFin" required>
                             <?php
                             $Minutos = 0;
