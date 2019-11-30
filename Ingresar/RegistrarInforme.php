@@ -37,10 +37,10 @@ include('..\components\header.php');
                 $database = new Connection();
                 $db = $database->open();
                 try{
-                    $sql = "SELECT Cv_Id, CONCAT(Bc_NombreInstitucion, ' MARCO ', Cv_ConvenioMarco, ' DERIVADO ', Cv_ConvenioDerivado) AS Convenio FROM banco_ies INNER JOIN convenios ON banco_ies.Bc_Id = convenios.Cv_IdInstitucion WHERE convenios.Cv_EstadoConvenio = '1'  ";
+                    $sql = "SELECT Bc_Id, CONCAT(Bc_NombreInstitucion, ' MARCO ', Cv_ConvenioMarco, ' DERIVADO ', Cv_ConvenioDerivado) AS Convenio FROM banco_ies INNER JOIN convenios ON banco_ies.Bc_Id = convenios.Cv_IdInstitucion WHERE convenios.Cv_EstadoConvenio = '1'  ";
                     foreach ($db->query($sql) as $row) {
                         ?>
-                        <option value="<?php echo($row['Cv_Id']); ?>"> <?php echo($row['Convenio']); ?></option>
+                        <option value="<?php echo($row['Bc_Id']); ?>"> <?php echo($row['Convenio']); ?></option>
                         <?php
                     }
                 }catch (PDOException $e){

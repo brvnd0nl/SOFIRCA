@@ -35,6 +35,7 @@
             foreach ($db->query($sql) as $row){
                 $ArchivoPDF = $row["Ad_Id"];
             }
+
         }else{
             $_SESSION['message'] = "Error Guardando el Archivo";
             header('location: ../Ingresar/RegistrarInforme.php');

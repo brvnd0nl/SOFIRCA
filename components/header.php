@@ -15,6 +15,23 @@
     }else{
         $UrlBase = "";
     }
+
+    if(!isset($_SESSION['Usuario'])){
+        include_once ($UrlBase."CerrarSesion.php");
+        header('location: ../index.php');
+    }elseif (!isset($_SESSION['NombreUsuario'])){
+        include_once ($UrlBase."CerrarSesion.php");
+        header('location: ../index.php');
+    }elseif (!isset($_SESSION['CodigoInstitucion'])){
+        include_once ($UrlBase."CerrarSesion.php");
+        header('location: ../index.php');
+    }elseif (!isset($_SESSION['TipoUsuario'])){
+        include_once ($UrlBase."CerrarSesion.php");
+        header('location: ../index.php');
+    }elseif (!isset($_SESSION['NivelSeguridad'])){
+        include_once ($UrlBase."CerrarSesion.php");
+        header('location: ../index.php');
+    }
 ?>
 
 <head>

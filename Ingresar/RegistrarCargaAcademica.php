@@ -127,7 +127,7 @@ include('..\components\header.php');
             </div>
             <div class="form-group">
                 <label for="TXT_DFechaGrado">Dias</label>
-                <div class="row" id="abc">
+                <div class="row">
                     <div class="col">
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input" id="CHK_Lunes" name ="SemanaLunes" >
@@ -226,7 +226,7 @@ include('..\components\header.php');
                     $database = new Connection();
                     $db = $database->open();
                     try {
-                        $sql = "SELECT programas.Pg_Nombre, fichas.F_Id FROM fichas, programas WHERE	programas.Pg_Id=fichas.F_PgId";
+                        $sql = "SELECT programas.Pg_Nombre, fichas.F_Id FROM fichas, programas, convenios WHERE	programas.Pg_Id=fichas.F_PgId AND fichas.F_CvId = convenios.Cv_Id AND convenios.Cv_IdInstitucion = '$Institucion' ";
                         foreach ($db->query($sql) as $rowCBX) {
                                 ?>
                                 <option value="<?php echo($rowCBX['F_Id']); ?>"> <?php echo($rowCBX['Pg_Nombre']."-".$rowCBX['F_Id']); ?></option>
@@ -249,43 +249,6 @@ include('..\components\header.php');
                 </select>
             </div>
         </div>
-        <!-- <div class="row">
-            <div class="col">
-                <div class="form-group">
-                    <label for="LBX_sDiaSemana">Dias de Semana</label>
-                    <select multiple class="form-control" id="LBX_sDiaSemana">
-                        <option value="L">LUNES</option>
-                        <option value="M">MARTES</option>
-                        <option value="W">MIERCOLES</option>
-                        <option value="J">JUEVES</option>
-                        <option value="V">VIERNES</option>
-                        <option value="S">SABADO</option>
-                    <option value="1">LUNES</option>
-                        <option value="2">MARTES</option>
-                        <option value="3">MIERCOLES</option>
-                        <option value="4">JUEVES/option>
-                        <option value="5">VIERNES</option>
-                        <option value="6">SABADO</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col">
-                <div class="text-center">
-                    <br>
-                    <br>
-                    <input type="button" class="btn btn-light" id="BTN_sIncluirDia" name="IncluirDia" value="Incluir">
-                    <input type="button" class="btn btn-light" id="BTN_sExcluirDia" name="ExcluirDia" value="Excluir">
-                </div>
-            </div>
-            <div class="col">
-                <div class="form-group">
-                    <label for="LBX_sDiaSemanaAsignada">Dias Asignados</label>
-                    <select multiple class="form-control" id="LBX_sDiaSemanaAsignada" name="DiasSemana">
-
-                    </select>
-                </div>
-            </div>
-        </div> -->
         <br>
         <div id="PasoN4" style="display: none" class="text-center">
             <button type="submit" id="BTN_sIngresarCargaA" name="IngresarCargaAcademica" class="btn btn-primary mx-auto" >Ingresar</button>
@@ -368,7 +331,7 @@ include('..\components\header.php');
             return;
         }
 
-        if(FechaInicioPeriodo > FechaFinalPeriodo ){
+        if(FechaInicio > FechaFin ){
             alert('Las fechas están mal diligenciadas');
             return;
         }
@@ -420,20 +383,20 @@ include('..\components\header.php');
     }
 
     function ocultarFormularioPrincipal() {
-        $('#LBX_sPeriodoAcademico').attr("disabled","");
-        $('#TXT_DFInicio').attr("disabled","");
-        $('#LBX_dHHoraInicio').attr("disabled","");
-        $('#LBX_dMMHoraInicio').attr("disabled","");
-        $('#TXT_DFFin').attr("disabled","");
-        $('#LBX_dHHoraFin').attr("disabled","");
-        $('#LBX_dMMHoraFin').attr("disabled","");
-        $('#LBX_sInstructor').attr("disabled","");
-        $('#LBX_sAmbiente').attr("disabled","");
-        $('#CHK_Lunes').attr("disabled","");
-        $('#CHK_Martes').attr("disabled","");
-        $('#CHK_Miercoles').attr("disabled","");
-        $('#CHK_Jueves').attr("disabled","");
-        $('#CHK_Viernes').attr("disabled","");
-        $('#CHK_Sabado').attr("disabled","");
+        $('#LBX_sPeriodoAcademico').attr("readonly","");
+        $('#TXT_DFInicio').attr("readonly","");
+        $('#LBX_dHHoraInicio').attr("readonly","");
+        $('#LBX_dMMHoraInicio').attr("readonly","");
+        $('#TXT_DFFin').attr("readonly","");
+        $('#LBX_dHHoraFin').attr("readonly","");
+        $('#LBX_dMMHoraFin').attr("readonly","");
+        $('#LBX_sInstructor').attr("readonly","");
+        $('#LBX_sAmbiente').attr("readonly","");
+        $('#CHK_Lunes').attr("readonly","");
+        $('#CHK_Martes').attr("readonly","");
+        $('#CHK_Miercoles').attr("readonly","");
+        $('#CHK_Jueves').attr("readonly","");
+        $('#CHK_Viernes').attr("readonly","");
+        $('#CHK_Sabado').attr("readonly","");
     }
 </script>

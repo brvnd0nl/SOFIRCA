@@ -2,6 +2,7 @@
 session_start();
 $_SESSION['Url'] = __FILE__;
 include('components\header.php');
+
 ?>
 <div class="container contenedor">
 <?php
@@ -23,6 +24,10 @@ if(isset($_SESSION['message'])){
         <div class="form-group">
             <label for="TXT_sUsuario">Número de Usuario</label>
             <input type="text" class="form-control" name="Usuario" id="TXT_sUsuario" required>
+        </div>
+        <div class="form-group">
+            <label for="TXT_sUsuario">Nombre de Usuario</label>
+            <input type="text" class="form-control" name="NombreUsuario" id="TXT_sNombreUsuario" required>
         </div>
         <div class="row">
     <div class="col">

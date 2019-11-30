@@ -133,7 +133,7 @@
                 $db = $database->open();
                 try {
                     $Datos = $_POST['Datos'];
-                    $sql = "SELECT Cp_Id, Cp_NombreC FROM competencia_programa INNER JOIN programas p on competencia_programa.Cp_PgId = p.Pg_Id WHERE p.Pg_Id = '$Datos' ";
+                    $sql = "SELECT Cp_Id, Cp_NombreC FROM competencia_programa INNER JOIN programas p on competencia_programa.Cp_PgId = p.Pg_Id INNER JOIN fichas ON p.Pg_Id = fichas.F_PgId WHERE fichas.F_Id = '$Datos' ";
                     echo "<option value=''></option>";
                     foreach ($db->query($sql) as $row) {
                         echo "<option value='". $row['Cp_Id'] . "'>" . utf8_encode($row['Cp_NombreC']) ."</option>";

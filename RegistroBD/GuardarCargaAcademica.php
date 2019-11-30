@@ -2,6 +2,7 @@
 session_start();
 $_SESSION['Url'] = __FILE__;
 include('..\components\header.php');
+
 ?>
 
 

@@ -174,4 +174,21 @@ $(document).on("change",".regional",function(event){
         });
 });
 
+$(document).on("change","#LBX_sFichaFormacion",function(event){
+    event.preventDefault();
+    var Datos =  $(this).val();
+    if(Datos === "" || Datos == null){
+        return;
+    }
+    var jqxhr = $.post("../ajax/Eventos.php",{NombreEvento: 'BuscarCompetenciaXPrograma', Datos: Datos }, function(data){
+        cmb = $("#LBX_sCompetenciaPrograma");
+        cmb.html(data);
+        cmb.change();
+    })
+        .fail(function (jqXHR1, textStatus, errorThrown) {
+            console.error("The following error occurred: "+ textStatus + ' : ' +  jqXHR1.responseText + ' : ' + errorThrown );
+            return;
+        });
+});
+
   
