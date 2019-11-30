@@ -135,15 +135,15 @@ $(document).on("click","#BTN_sBuscarPrograma",function(event){
     }
 });
 
-$(document).on("click","#BTN_sBuscarPrograma",function(event){
+$(document).on("click","#BTN_sBuscarCompetencia",function(event){
     try{
         event.preventDefault();
-        var Datos =  $("#TXT_sBuscarPrograma").val();
+        var Datos =  $("#TXT_sBuscarCompetencia").val();
         if(Datos === "" || Datos == null){
             return;
         }
-        var jqxhr = $.post("../ajax/Eventos.php",{NombreEvento: 'BuscarPrograma', Datos: Datos }, function(data){
-            cmb = $("#LBX_sPrograma");
+        var jqxhr = $.post("../ajax/Eventos.php",{NombreEvento: 'BuscarCompetencia', Datos: Datos }, function(data){
+            cmb = $("#LBX_sCompetencia");
             cmb.html(data);
             cmb.change();
         })
@@ -151,7 +151,7 @@ $(document).on("click","#BTN_sBuscarPrograma",function(event){
                 console.error("The following error occurred: "+ textStatus + ' : ' +  jqXHR1.responseText + ' : ' + errorThrown );
                 return;
             });
-        BuscarPrograma();
+        BuscarCompetencia();
     }catch(e){
         console.error('Error: ' + e);
     }

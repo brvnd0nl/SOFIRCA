@@ -28,7 +28,7 @@ include('..\components\header.php');
                     <option value=""></option>
                 </select>
                 <span class="input-group-btn">
-                    <button id="BTN_sBuscarCompetencia" onclick="BuscarCompetencia();" class="btn btn-light"
+                    <button id="BTN_sBuscarCompetencia" class="btn btn-light"
                             type="button">Buscar</button>
                     <button id="BTN_sVolverABuscarCompetencia" onclick="regresarBuscarCompetencia();"
                             class="btn btn-light" type="button" hidden>Volver a Buscar</button>
