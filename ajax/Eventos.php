@@ -128,6 +128,26 @@
             }
          break;
 
+        case 'BuscarCompetenciaXPrograma':
+            if(isset($_POST['Datos'])){
+                $db = $database->open();
+                try {
+                    $Datos = $_POST['Datos'];
+                    $sql = "SELECT Cp_Id, Cp_NombreC FROM competencia_programa INNER JOIN programas p on competencia_programa.Cp_PgId = p.Pg_Id WHERE p.Pg_Id = '$Datos' ";
+                    echo "<option value=''></option>";
+                    foreach ($db->query($sql) as $row) {
+                        echo "<option value='". $row['Cp_Id'] . "'>" . utf8_encode($row['Cp_NombreC']) ."</option>";
+                    }
+
+                } catch (PDOException $e) {
+                    $_SESSION['message'] = $e->getMessage();
+                    //header('location: ../index.php');
+                    echo $e->getMessage();
+                }
+                $database->close();
+            }
+            break;
+
         case 'ObtenerFechasPeriodo':
             if(isset($_POST['Datos'])){
                 $db = $database->open();
@@ -354,7 +374,7 @@
                         }
 
                         $tabla.='{
-                                    "programa" : "'.$row['Pg_Nombre'].'",
+                                    "programa" : "'.trim($row['Pg_Nombre']).'",
                                     "centroformacion" : "'.$row['Cf_Nombre'].'",
                                     "acciones" : "'.$AccionDescarga.$AccionEditar.$AccionEliminar.'"
                                     },';

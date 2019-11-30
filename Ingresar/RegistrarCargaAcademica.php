@@ -246,24 +246,6 @@ include('..\components\header.php');
                 <label for="LBX_sCompetenciaPrograma">Competencia</label>
                 <select class="form-control" id="LBX_sCompetenciaPrograma" name="Competencia" required>
                     <option value=""></option>
-                <?php
-                    $database = new Connection();
-                    $db = $database->open();
-                    try {
-                        $sql = "SELECT * FROM competencia_programa";
-                        foreach ($db->query($sql) as $rowCBX) {
-                                ?>
-                                <option value="<?php echo($rowCBX['Cp_Id']); ?>"> <?php echo($rowCBX['Cp_NombreC']); ?></option>
-                                <?php
-                        }
-                    } catch (PDOException $e) {
-                        $_SESSION['message'] = $e->getMessage();
-                        echo($e->getMessage());
-                        header('location: index.php');
-                    }
-
-                    $database->close();
-                    ?>
                 </select>
             </div>
         </div>
